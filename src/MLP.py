@@ -12,11 +12,11 @@ class MLP(nn.Module):
         self.geek_emb = nn.Embedding(n_geek, emb_dim)
         dim = emb_dim * 2
         self.hidens = nn.Sequential(
-            nn.Linear(dim, dim // 2, bias=False),
+            nn.Linear(dim, dim // 2, bias=True),
             nn.ReLU(),
-            nn.Linear(dim // 2, dim // 4, bias=False),
+            nn.Linear(dim // 2, dim // 4, bias=True),
             nn.ReLU(),
-            nn.Linear(dim // 4, 1, bias=False),
+            nn.Linear(dim // 4, 1, bias=True),
             nn.Sigmoid()
         )
         self.criterion = nn.BCELoss()
